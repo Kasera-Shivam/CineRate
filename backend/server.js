@@ -14,6 +14,7 @@ const __filename = fileURLToPath(import.meta.url);
 let __dirname = path.dirname(__filename);
 
 __dirname = __dirname.split("\\backend")[0];
+console.log(__dirname);
 
 app.use(express.static(path.join(__dirname, "frontend", "dist")));
 app.use(cors());
