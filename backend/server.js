@@ -1,6 +1,6 @@
 import express from "express";
 import path from "path";
-import { fileURLToPath } from "url";
+import { __dirname, __filename } from "../dirname.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import http from "http";
@@ -9,12 +9,6 @@ import "dotenv/config";
 import routes from "./src/routes/index.js";
 
 const app = express();
-
-const __filename = fileURLToPath(import.meta.url);
-let __dirname = path.dirname(__filename);
-
-__dirname = __dirname.split("\\backend")[0];
-console.log(__dirname);
 
 app.use(express.static(path.join(__dirname, "frontend", "dist")));
 app.use(cors());
