@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 import menuConfigs from "../../configs/menu.configs";
 import { setUser } from "../../redux/features/userSlice";
 import AvatarImage from "/avatar.jpeg";
+import TextAvatar from "./TextAvatar";
 
 const UserMenu = () => {
   const { user } = useSelector((state) => state.user);
@@ -26,17 +27,7 @@ const UserMenu = () => {
     <>
       {user && (
         <>
-          <img
-            src={AvatarImage}
-            alt={user.username}
-            style={{
-              width: "40px",
-              height: "40px",
-              borderRadius: "100%",
-              cursor: "pointer",
-            }}
-            onClick={toggleMenu}
-          />
+          <TextAvatar text={user.username} onClick={toggleMenu} />
           <Menu
             open={Boolean(anchorEl)}
             anchorEl={anchorEl}
