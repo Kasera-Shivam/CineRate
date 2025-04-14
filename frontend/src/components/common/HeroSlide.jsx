@@ -11,8 +11,10 @@ import {
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/autoplay";
 import { toast } from "react-toastify";
 
 import { setGlobalLoading } from "../../redux/features/globalLoadingSlice";
@@ -84,12 +86,13 @@ const HeroSlide = ({ mediaType, mediaCategory }) => {
       <Swiper
         grabCursor={true}
         loop={true}
-        // modules={[Autoplay]}
+        modules={[Autoplay]}
         style={{ width: "100%", height: "max-content" }}
-        // autoplay={{
-        //   delay: 3000,
-        //   disableOnInteraction: false
-        // }}
+        autoplay={{
+          delay: 3000,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
+        }}
       >
         {movies.map((movie, index) => (
           <SwiperSlide key={index}>
