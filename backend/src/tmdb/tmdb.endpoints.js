@@ -8,6 +8,8 @@ const tmdbEndpoints = {
   mediaGenres: ({ mediaType }) => tmdbConfig.getUrl(`genre/${mediaType}/list`),
   mediaCredits: ({ mediaType, mediaId }) =>
     tmdbConfig.getUrl(`${mediaType}/${mediaId}/credits`),
+  mediaWatchProviders: ({ mediaType, mediaId }) =>
+    tmdbConfig.getUrl(`${mediaType}/${mediaId}/watch/providers`),
   mediaVideos: ({ mediaType, mediaId }) =>
     tmdbConfig.getUrl(`${mediaType}/${mediaId}/videos`),
   mediaRecommend: ({ mediaType, mediaId }) =>

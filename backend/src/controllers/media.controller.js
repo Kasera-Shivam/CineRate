@@ -61,6 +61,11 @@ const getDetail = async (req, res) => {
 
     media.credits = await tmdbApi.mediaCredits(params);
 
+    media.watchProviders = await tmdbApi.mediaWatchProviders({
+      mediaType,
+      mediaId,
+    });
+
     const videos = await tmdbApi.mediaVideos(params);
 
     media.videos = videos;

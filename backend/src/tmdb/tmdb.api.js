@@ -10,6 +10,10 @@ const tmdbApi = {
     await axiosClient.get(tmdbEndpoints.mediaDetail({ mediaType, mediaId })),
   mediaGenres: async ({ mediaType }) =>
     await axiosClient.get(tmdbEndpoints.mediaGenres({ mediaType })),
+  mediaWatchProviders: async ({ mediaType, mediaId }) =>
+    await axiosClient.get(
+      tmdbEndpoints.mediaWatchProviders({ mediaType, mediaId })
+    ),
   mediaCredits: async ({ mediaType, mediaId }) =>
     await axiosClient.get(tmdbEndpoints.mediaCredits({ mediaType, mediaId })),
   mediaVideos: async ({ mediaType, mediaId }) =>
