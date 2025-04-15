@@ -12,7 +12,6 @@ const privateClient = axios.create({
 });
 
 privateClient.interceptors.request.use(async (config) => {
-  console.log(localStorage.getItem("actkn"));
   return {
     ...config,
     headers: {

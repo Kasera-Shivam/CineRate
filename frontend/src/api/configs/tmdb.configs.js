@@ -14,8 +14,7 @@ const backdropPath = (imgEndpoint) =>
 const posterPath = (imgEndpoint) =>
   `https://image.tmdb.org/t/p/w500${imgEndpoint}`;
 
-const youtubePath = (videoId) =>
-  `https://www.youtube.com/embed/${videoId}?controls=0`;
+const youtubePath = (videoId) => `https://www.youtube.com/embed/${videoId}`;
 
 const tmdbConfigs = {
   mediaType,
