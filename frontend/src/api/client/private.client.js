@@ -1,8 +1,8 @@
 import axios from "axios";
 import queryString from "query-string";
 
-// const baseURL = "https://cinerate-v0001.onrender.com/api/";
-const baseURL = "http://localhost:5000/api/";
+const baseURL = "https://cinerate-v0001.onrender.com/api/";
+// const baseURL = "http://localhost:5000/api/";
 
 const privateClient = axios.create({
   baseURL,
