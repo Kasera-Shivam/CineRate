@@ -44,6 +44,9 @@ const MediaDetail = () => {
 
   const videoRef = useRef(null);
 
+  const userCountry =
+    Intl.DateTimeFormat().resolvedOptions().locale.split("-")[1] || "US";
+
   useEffect(() => {
     window.scrollTo(0, 0);
     const getMedia = async () => {
@@ -119,6 +122,8 @@ const MediaDetail = () => {
       toast.success("Remove favorite success");
     }
   };
+
+  console.log(media);
 
   return media ? (
     <>
@@ -259,6 +264,141 @@ const MediaDetail = () => {
           </Box>
         </Box>
         {/* media content */}
+
+        {/* watch providers */}
+        {media.watchProviders?.results?.[userCountry] && (
+          <>
+            {/* Flatrate */}
+            {media.watchProviders.results[userCountry].flatrate?.length > 0 && (
+              <Container header="Streaming On">
+                <Stack direction="row" spacing={3} flexWrap="wrap">
+                  {media.watchProviders.results[userCountry].flatrate.map(
+                    (provider, i) => (
+                      <a
+                        key={`flatrate-${i}`}
+                        href={media.watchProviders.results[userCountry].link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ textDecoration: "none", color: "inherit" }}
+                      >
+                        <Box
+                          sx={{
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                            width: 64,
+                          }}
+                        >
+                          <Box
+                            component="img"
+                            src={tmdbConfigs.posterPath(provider.logo_path)}
+                            alt={provider.provider_name}
+                            sx={{
+                              width: 48,
+                              height: 48,
+                              borderRadius: 1,
+                              mb: 0.5,
+                            }}
+                          />
+                          <Typography variant="caption" align="center" noWrap>
+                            {provider.provider_name}
+                          </Typography>
+                        </Box>
+                      </a>
+                    )
+                  )}
+                </Stack>
+              </Container>
+            )}
+
+            {/* Rent */}
+            {media.watchProviders.results[userCountry].rent?.length > 0 && (
+              <Container header="Available to Rent">
+                <Stack direction="row" spacing={3} flexWrap="wrap">
+                  {media.watchProviders.results[userCountry].rent.map(
+                    (provider, i) => (
+                      <a
+                        key={`rent-${i}`}
+                        href={media.watchProviders.results[userCountry].link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ textDecoration: "none", color: "inherit" }}
+                      >
+                        <Box
+                          sx={{
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                            width: 64,
+                          }}
+                        >
+                          <Box
+                            component="img"
+                            src={tmdbConfigs.posterPath(provider.logo_path)}
+                            alt={provider.provider_name}
+                            sx={{
+                              width: 48,
+                              height: 48,
+                              borderRadius: 1,
+                              mb: 0.5,
+                            }}
+                          />
+                          <Typography variant="caption" align="center" noWrap>
+                            {provider.provider_name}
+                          </Typography>
+                        </Box>
+                      </a>
+                    )
+                  )}
+                </Stack>
+              </Container>
+            )}
+
+            {/* Buy */}
+            {media.watchProviders.results[userCountry].buy?.length > 0 && (
+              <Container header="Available to Buy">
+                <Stack direction="row" spacing={3} flexWrap="wrap">
+                  {media.watchProviders.results[userCountry].buy.map(
+                    (provider, i) => (
+                      <a
+                        key={`buy-${i}`}
+                        href={media.watchProviders.results[userCountry].link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ textDecoration: "none", color: "inherit" }}
+                      >
+                        <Box
+                          sx={{
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                            width: 64,
+                          }}
+                        >
+                          <Box
+                            component="img"
+                            src={tmdbConfigs.posterPath(provider.logo_path)}
+                            alt={provider.provider_name}
+                            sx={{
+                              width: 48,
+                              height: 48,
+                              borderRadius: 1,
+                              mb: 0.5,
+                            }}
+                          />
+                          <Typography variant="caption" align="center" noWrap>
+                            {provider.provider_name}
+                          </Typography>
+                        </Box>
+                      </a>
+                    )
+                  )}
+                </Stack>
+              </Container>
+            )}
+          </>
+        )}
+        {/* watch providers */}
 
         {/* media videos */}
         <div ref={videoRef} style={{ paddingTop: "2rem" }}>
